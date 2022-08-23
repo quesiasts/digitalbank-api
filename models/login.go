@@ -1,6 +1,8 @@
 package models
 
-import "gopkg.in/validator.v2"
+import (
+	"gopkg.in/validator.v2"
+)
 
 type Login struct {
 	Cpf    string `json:"cpf" validate:"len=11,regexp=^[0-9]*$"`

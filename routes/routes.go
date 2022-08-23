@@ -12,5 +12,6 @@ func HandleRequests() {
 	r.GET("/accounts", controllers.ListAllAccounts)
 	r.GET("/accounts/:account_id/balance", controllers.SearchForBalance)
 	r.POST("/accounts", controllers.CreateAccount)
+	r.POST("/login", controllers.AuthenticateUser)
 	r.Run()
 }

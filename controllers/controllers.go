@@ -66,3 +66,21 @@ func SearchForBalance(c *gin.Context) {
 
 	c.JSON(http.StatusOK, account)
 }
+
+// POST /login - autentica a usuaria
+func AuthenticateUser(c *gin.Context) {
+	var login models.Login
+	if err := c.ShouldBindJSON(&login); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error()})
+		return
+	}
+	if err := models.ValidateLogin(&login); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error()})
+		return
+	}
+
+	database.DB.Create(&login)
+	c.JSON(http.StatusOK, login)
+}
