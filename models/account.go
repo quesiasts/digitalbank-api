@@ -11,7 +11,7 @@ type Account struct {
 	Name       string    `json:"name,omitempty"`
 	Cpf        string    `json:"cpf" validate:"len=11,regexp=^[0-9]*$"`
 	Secret     string    `json:"secret" validate:"nonzero"`
-	Balance    float64   `json:"balance"`
+	Balance    float64   `json:"balance" validate:"nonzero,min=0"`
 	Created_at time.Time `json:"created_at,omitempty"`
 }
 
